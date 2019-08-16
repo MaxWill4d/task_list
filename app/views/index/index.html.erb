@@ -1,11 +1,25 @@
 <h1>Задачи</h1>
 
-
+<br><br>
 
   <% @projects.each do |project| %>
       <h2><%= project.title %></h2>
-
-      <% @todos.each do |todo| %>
-         <h4><%= todo.text %></h4>
-       <% end %>
+      <ul>
+        <% project.todos.each do |todo| %>
+           <li><%= todo.text %></li>
+         <% end %>
+       </ul>
   <% end %>
+
+<br>
+<%= link_to "+", '#', id: "create_todo" %>
+<div id="new_task" style="display: none;">
+<h2>НОВАЯ ЗАДАЧА</h2>
+
+<%= form_for :todo_create, url: index_path,:html => { :id => "form" } do |form| %>
+  <%= form.text_field :text %> <br>
+  <%= form.select(:project_id, @projects_titles) %> <br>
+  <%= link_to "ОТМЕНА", '#', id: "cancel" %>
+  <%= link_to "ОК", '#', id: "index_path" %>
+<% end %>
+</div>

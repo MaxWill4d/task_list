@@ -12,5 +12,17 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+$(document).on("click", "#index_path", function(){
+   $("#form").submit();
+});
+
+$(document).on("click", "#create_todo", function(){
+   var obj = document.getElementById("new_task");
+   obj.style.display = "block";
+});
+
+$(document).on("click", "#cancel", function(){
+  var obj = document.getElementById("new_task");
+  obj.style.display = "none";
+});
