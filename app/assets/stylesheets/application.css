@@ -95,6 +95,10 @@
   display: unset;
 }
 
+.icheckbox_square-blue:checked + p{
+  text-decoration: line-through;
+}
+
 #project_cart p{
   margin: 0 0 0 25px;
   display: unset;
