@@ -26,3 +26,9 @@ $(document).on("click", "#cancel", function(){
   var obj = document.getElementById("new_task");
   obj.style.display = "none";
 });
+
+// ================================================
+
+  function onChange(){
+  this.parentNode.submit();
+}
