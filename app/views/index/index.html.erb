@@ -1,25 +1,41 @@
-<h1>Задачи</h1>
+<div id="header">
+  <h1>Задачи<%= link_to "+", '#', id: "create_todo" %></h1>
 
-<br><br>
+</div>
 
-  <% @projects.each do |project| %>
-      <h2><%= project.title %></h2>
-      <ul>
-        <% project.todos.each do |todo| %>
-           <li><%= todo.text %></li>
-         <% end %>
-       </ul>
-  <% end %>
+<div id="content">
+  <div id="projects">
+    <% @projects.each do |project| %>
+      <div id="project_cart">
+          <h2><%= project.title %></h2>
+          <div id="line"></div>
+          <ul>
+            <% project.todos.each do |todo| %>
+               <li>
+                 <%= form_for :todos, :url => index_update_path, method: :patch, html: {id: "update" } do |f| %>
+                 <%=f.check_box(:isCompleted,{class: 'icheckbox_square-blue', dataskin: "square", datacolor: "blue", onchange: "onChange.call(this);", checked: todo.isCompleted},todo.id) %>
+                 <%= f.hidden_field :id, :value => todo.id %>
+                 <% end %>
+                 <p><%= todo.text %></p>
+               </li>
+             <% end %>
+           </ul>
+      </div>
+    <% end %>
+  </div>
+  <br>
 
-<br>
-<%= link_to "+", '#', id: "create_todo" %>
-<div id="new_task" style="display: none;">
-<h2>НОВАЯ ЗАДАЧА</h2>
 
-<%= form_for :todo_create, url: index_path,:html => { :id => "form" } do |form| %>
-  <%= form.text_field :text %> <br>
-  <%= form.select(:project_id, @projects_titles) %> <br>
-  <%= link_to "ОТМЕНА", '#', id: "cancel" %>
-  <%= link_to "ОК", '#', id: "index_path" %>
-<% end %>
+    <div id="new_task">
+      <div id="new_task_container">
+        <h2>НОВАЯ ЗАДАЧА</h2>
+        <div id="line"></div>
+        <%= form_for :todo_create, url: index_path,:html => { :id => "form" } do |form| %>
+          <%= form.text_field :text, placeholder:"Название задачи..."%> <br>
+          <%= form.select(:project_id, @projects_titles) %> <br>
+          <%= link_to "ОТМЕНА", '#', id: "cancel", style: "background-color:#8c8c8c;" %>
+          <%= link_to "ОК", '#', id: "index_path" %>
+        <% end %>
+      </div>
+    </div>
 </div>
