@@ -104,10 +104,10 @@ input[type="checkbox"] + label span {
     height: 22px;
     margin:-1px 4px 0 0;
     vertical-align:middle;
-    background:url(blue.png) -24px  top no-repeat;
+    background:url(image_path('blue.png')) -24px  top no-repeat;
     cursor:pointer;
 }
-input[type="checkbox"]:checked + label span {    background:url(blue.png) -48px top no-repeat;
+input[type="checkbox"]:checked + label span {    background:url(image_path('blue.png')) -48px top no-repeat;
 }
 
 .icheckbox_square-blue:checked + label p{
