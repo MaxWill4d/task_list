@@ -14,7 +14,7 @@
                <li>
                  <%= form_for :todos, :url => index_update_path, method: :patch, html: {id: "update" } do |f| %>
                  <%= f.check_box(:isCompleted,{class: 'icheckbox_square-blue', dataskin: "square", datacolor: "blue", onchange: "onChange.call(this);", checked: todo.isCompleted, id:"chek_todo_" + todo.id.to_s}, todo.id) %>
-                 <label for="chek_todo_<%= todo.id %>"><span></span><%= todo.text %></label>
+                 <label for="chek_todo_<%= todo.id %>"><span></span><p><%= todo.text %></p></label>
                  <%= f.hidden_field :id, :value => todo.id %>
                  <% end %>
                </li>
